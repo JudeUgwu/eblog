@@ -1,128 +1,50 @@
-<?php
-
-require_once "Db.php";
-  
-  // echo "<pre>";
-  // print_r($_POST);
-
-  // process registration
-  if (!empty($_POST['register'])) {
-      extract($_POST);
-      $errors = [];
-
-      // check if username is empty
-      if (empty($username)) {
-          $errors["username"] = "Please enter username";
-      }
-
-      // check if email is empty
-      if (empty($email)) {
-          $errors["email"] = "Please enter email";
-      }
-
-      // check if password is empty
-      if (empty($password)) {
-          $errors["password"] = "Please enter password";
-      }
-
-      // check if photo is empty
-      if (empty($photo)) {
-          $errors["photo"] = "Please enter photo";
-      }
-
-      // check if fullname is empty
-      if (empty($errors)) {
-         $password = sha1($password);
-         $sql = "INSERT INTO `users`(`username`,`email`,`password`,`photo`) VALUES('$username','$email','$password','$photo')";
-         $result = $conn->query($sql);
-
-         if($result){
-          $success = "Congrats You just registered";
-         header("Refresh:2; url=login.php");
-         }else{
-            $error = "Data did not insert";
-         }
-
-       
-      }
-  }
-
-
-?>
+<?php  require_once "config/config.php";?>
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="form.css">
-    <title>Document</title>
-    <style>
-      .danger{
-        color:red;
-      }
-    </style>
-  </head>
+<head>
+    <title></title>
+    <?php require_once "includes/css.php"; ?>
+</head>
 
-  <body>
-    <div class="container">
+<body>
 
-      <h1>Register with us and make money</h1>
-      <form action="<?=$_SERVER["PHP_SELF"]?>"
-        method="POST">
-
-        <?php if(!empty($success)){ ?>
-           <p style="color:green;text-align:center;"><?=$success?></p>
-        <?php  }elseif(!empty($error)){ ?>
-           <p style="color:red;text-align:center;"><?=$error?></p>
-        <?php  } ?>
+<?php require_once "includes/navbar.php"; ?>
 
 
-
-        <div class="form-row">
-          <label for="username">username</label>
-          <input type="text" name="username" id="username" placeholder="Enter username">
-          <?php  if (!empty($errors["username"])) { ?>
-          <span class="danger"><?=$errors["username"]?></span>
-          <?php } ?>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">                  
+                    <div class="case">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
+                                <a href="readpost.php" class="img w-100 mb-3 mb-md-0" style="background-image: url(assets/images/image_9.jpg);"></a>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
+                                <div class="text w-100 pl-md-3">
+                                    <span class="subheading">Illustration</span>
+                                    <h2><a href="readpost.php">Build a website in minutes with Adobe Templates</a></h2>
+                                    <ul class="media-social list-unstyled">
+                                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                                    </ul>
+                                    <div class="meta">
+                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+    <?php  require_once "includes/footer.php"; ?>
 
-        <div class="form-row">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" placeholder="Enter email">
-                    <?php  if (!empty($errors["email"])) { ?>
-          <span class="danger"><?=$errors["email"]?></span>
-          <?php } ?>
-        </div>
-
-                <div class="form-row">
-          <label for="photo">photo</label>
-          <input type="text" name="photo" id="photo" placeholder="Enter photo">
-          <?php  if (!empty($errors["photo"])) { ?>
-          <span class="danger"><?=$errors["photo"]?></span>
-          <?php } ?>
-        </div>
-
-        <div class="form-row">
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" placeholder="Enter password">
-                    <?php  if (!empty($errors["password"])) { ?>
-          <span class="danger"><?=$errors["password"]?></span>
-          <?php } ?>
-        </div>
-
-
-
-
-        <div class="form-row">
-          <input type="submit" name="register" value="Register Now">
-        </div>
-
-
-      </form>
-
-    </div>
-  </body>
+   
+</body>
+<?php require_once "includes/js.php"; ?>
 
 </html>
