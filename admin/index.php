@@ -62,7 +62,7 @@
                                                 <div class="d-flex flex-wrap">
                                                     <div class="me-3">
                                                         <p class="text-muted mb-2">Pages</p>
-                                                        <h5 class="mb-0">86</h5>
+                                                        <h5 class="mb-0">869999</h5>
                                                     </div>
     
                                                     <div class="avatar-sm ms-auto">

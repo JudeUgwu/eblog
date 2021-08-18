@@ -1,4 +1,35 @@
-<?php require_once "../config/config.php"; ?>
+<?php 
+
+ require_once "../config/config.php"; 
+ require_once "../core/Database.php";
+ require_once "../controllers/Category.php";
+
+ if(!empty($_POST["add-category"])){
+
+    extract($_POST);
+    $flag = false;
+
+    // check if a category already exists
+    if(Category::exists($name)){
+        $error  = "Category already exists";
+        $flag = true;
+    }
+
+    if(!$flag){
+        $result = Category::add($name);
+        if($result){
+            $success = "Category added successfully";
+        }else{
+            $error = "Failed to add category";
+        }
+    }
+
+
+
+ }
+
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,6 +52,17 @@
 
                         <!-- start page title -->
                         <div class="row">
+
+                           <div class="col-md-12">
+                               <?php if(!empty($success)){ ?>
+                                <p class="alert alert-success text-center"><?=$success?></p>
+                               <?php }elseif(!empty($error)){ ?>
+                                <p class="alert alert-danger text-center"><?=$error?></p>
+                               <?php } ?>
+                             
+
+                           </div>
+
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                     <h4 class="mb-sm-0 font-size-18">Add Category</h4>
@@ -37,64 +79,15 @@
                                     <div class="card-body">
                                         <h4 class="card-title mb-4">Add Category Form</h4>
 
-                                        <form>
+                                        <form action="<?=$_SERVER['PHP_SELF']?>" method="POST" > 
                                             <div class="mb-3">
-                                                <label for="formrow-firstname-input" class="form-label">First name</label>
-                                                <input type="text" class="form-control" id="formrow-firstname-input">
+                                                <label for="formrow-firstname-input" class="form-label">Category Name</label>
+                                                <input require type="text" class="form-control" id="formrow-firstname-input" name="name">
                                             </div>
 
-                                            <div class="row">
-                                                
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="formrow-email-input" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="formrow-email-input">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="formrow-password-input" class="form-label">Password</label>
-                                                        <input type="password" class="form-control" id="formrow-password-input">
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="formrow-inputCity" class="form-label">City</label>
-                                                        <input type="text" class="form-control" id="formrow-inputCity">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="formrow-inputState" class="form-label">State</label>
-                                                        <select id="formrow-inputState" class="form-select">
-                                                            <option selected>Choose...</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="formrow-inputZip" class="form-label">Zip</label>
-                                                        <input type="text" class="form-control" id="formrow-inputZip">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                    <label class="form-check-label" for="gridCheck">
-                                                      Check me out
-                                                    </label>
-                                                </div>
-                                            </div>
                                             <div>
-                                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                                <button type="submit" name="add-category" value="Submit" class="btn btn-primary w-md">Submit</button>
                                             </div>
                                         </form>
                                     </div>
