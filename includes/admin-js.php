@@ -1,5 +1,7 @@
     <!-- JAVASCRIPT -->
     <script src="<?=ASSET_URL_JS_ADMIN?>libs/jquery/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="<?=ASSET_URL_JS_ADMIN?>admin.js"></script>
     <script src="<?=ASSET_URL_JS_ADMIN?>libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?=ASSET_URL_JS_ADMIN?>libs/metismenu/metisMenu.min.js"></script>
     <script src="<?=ASSET_URL_JS_ADMIN?>libs/simplebar/simplebar.min.js"></script>

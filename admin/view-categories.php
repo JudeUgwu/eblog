@@ -46,13 +46,13 @@
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($allCategories as $key => $value) { ?>
-                                                <tr>
+                                                <tr id="row<?=$value->id?>">
                                                     <td><?=$key+1?></td>
                                                     <td><?=ucwords($value->name)?></td>
                                                     <td><?=date("d M, Y h:s A",strtotime($value->created_at))?></td>
                                                     <td>
                                                       <a href="<?=APP_URL?>admin/edit-category.php?id=<?=$value->id?>" class="btn btn-success">Edit</a>
-                                                      <a href="" class="btn btn-danger">Delete</a>
+                                                      <a data-type="deleteCategory" data-id="<?=$value->id?>" href="<?=APP_URL?>api/process.php" class="btn btn-danger delete_data">Delete</a>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>

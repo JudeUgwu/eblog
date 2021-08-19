@@ -23,12 +23,7 @@
             $error = "Failed to add category";
         }
     }
-
-
-
  }
-
-
 ?>
 <!doctype html>
 <html lang="en">

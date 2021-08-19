@@ -55,6 +55,19 @@ class Category extends Database{
       return $result;
 
     }
+
+      /**
+     * @desc This function helps delete one category by the id
+     * @param integer id
+     * @return array of the category
+     */
+    public static function deleteOneById($id){
+
+      $sql = "DELETE FROM ".self::TABLE_NAME." WHERE `id`='$id'";
+      $result = self::delete($sql);
+      return $result;
+
+    }
     
     /**
    * @desc This function helps update a category

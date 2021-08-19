@@ -40,6 +40,25 @@ class Database{
     }
   }
 
+    /**
+   * @desc this function deletes a record to any table in the database
+   * @param string sql statment
+   * @return boolean
+   */
+  public static function delete($sql)
+  {
+    if(!empty($sql)){
+       $result = self::getInstance()->query($sql);
+       if($result){
+         return true;
+        }else{
+          return false;
+        }
+    }else{
+      return false;
+    }
+  }
+
   /**
    * @desc This function returns a single record from any database table
    * @param string sql statment
