@@ -1,3 +1,13 @@
+<?php 
+ require_once "../config/config.php";
+
+ if(empty($_SESSION['admin_id'])){
+    $url  = APP_URL."auth/login.php";
+    header("Location: $url");
+    exit();
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -26,7 +36,7 @@
                             <div class="p-2">
                                 <form class="form-horizontal" action="" method="">
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">email</label>
+                                        <label for="email" class="form-label">Email</label>
                                         <input type="email" class="form-control" id="email" placeholder="Enter email">
                                     </div>
                                     <div class="mb-3">
@@ -37,7 +47,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-3 d-grid">
-                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Register</button>
+                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
                                     </div>
                                 </form>
                             </div>

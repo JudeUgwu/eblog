@@ -3,7 +3,11 @@
  require_once "../config/config.php"; 
  require_once "../core/Database.php";
  require_once "../controllers/Category.php";
-
+ if(empty($_SESSION['admin_id'])){
+    $url  = APP_URL."auth/login.php";
+    header("Location: $url");
+    exit();
+}
   $allCategories = Category::getAll();
 
 

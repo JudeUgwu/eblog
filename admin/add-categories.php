@@ -4,6 +4,15 @@
  require_once "../core/Database.php";
  require_once "../controllers/Category.php";
 
+
+
+ if(empty($_SESSION['admin_id'])){
+    $url  = APP_URL."auth/login.php";
+    header("Location: $url");
+    exit();
+}
+
+
  if(!empty($_POST["add-category"])){
 
     extract($_POST);

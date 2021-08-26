@@ -4,6 +4,15 @@
  require_once "../core/Database.php";
  require_once "../controllers/Category.php";
 
+
+ if(empty($_SESSION['admin_id'])){
+    $url  = APP_URL."auth/login.php";
+    header("Location: $url");
+    exit();
+}
+
+
+
 //  get the id of the category
 $category_id = $_GET['id'];
 if(empty($category_id) || !is_numeric($category_id)){

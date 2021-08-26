@@ -44,7 +44,7 @@
                                     <span key="t-charts33">Posts</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="" key="t-apex-charts44">Add Post</a></li>
+                                    <li><a href="add-post.php" key="t-apex-charts44">Add Post</a></li>
                                     <li><a href="" key="t-apex-charts44">View Posts</a></li>
                                 </ul>
                             </li>
@@ -56,6 +56,13 @@
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="charts-apex.html" key="t-apex-charts43">View Comment</a></li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a href="<?=APP_URL?>auth/logout.php" class=" waves-effect">
+                                    <i class="bx bxs-bar-chart-alt-2"></i>
+                                    <span key="t-charts44">Logout</span>
+                                </a>
+                               
                             </li>
                         </ul>
                     </div>

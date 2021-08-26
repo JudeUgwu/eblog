@@ -8,7 +8,7 @@ define("ASSET_URL_CSS_ADMIN", "http://localhost:8888/eblog/assets/css/admin/");
 define("ASSET_URL_JS_HOME", "http://localhost:8888/eblog/assets/js/home/");
 define("ASSET_URL_JS_ADMIN", "http://localhost:8888/eblog/assets/js/admin/");
 
-
+session_start();
 
 ?>
 
